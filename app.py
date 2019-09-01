@@ -22,7 +22,7 @@ url = StringVar()
 url_entry = ttk.Entry(mainframe, width=70, textvariable=url)
 url_entry.grid(column=2, row=1, sticky=(W, E))
 
-ttk.Button(mainframe, text="Send", command=_request).grid(column=3, row=3, sticky=W)
+ttk.Button(mainframe, text="Send", command=_request).grid(column=3, row=1, sticky=W)
 
 ttk.Label(mainframe, text="URL: ").grid(column=1, row=1, sticky=W)
 
