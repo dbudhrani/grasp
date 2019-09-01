@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 
 def _get(*args, **kwargs):
   url = kwargs.get('url') 
@@ -7,6 +8,8 @@ def _get(*args, **kwargs):
     url = 'http://' + url
   response = requests.get(url)
   content = response.content
+  bs = BeautifulSoup(content, 'html')
+  content = bs.prettify()
   print(content)
   return content
 
