@@ -24,10 +24,18 @@ url_entry.grid(column=2, row=1, sticky=(W, E))
 
 ttk.Button(mainframe, text="Send", command=_request).grid(column=3, row=1, sticky=W)
 
-ttk.Label(mainframe, text="URL: ").grid(column=1, row=1, sticky=W)
+Label(mainframe, text="URL").grid(column=1, row=1, sticky=W)
+
+rq_method = StringVar(root)
+rq_method.set('GET')
+rq_methods = {'GET', 'POST', 'PUT', 'DELETE'}
+
+rq_methods_menu = OptionMenu(mainframe, rq_method, *rq_methods)
+Label(mainframe, text='Request method').grid(row=2, column=1)
+rq_methods_menu.grid(row=2, column=2)
 
 response_area = Text(mainframe, borderwidth=3, relief="sunken")
-response_area.grid(column=2, row=2, sticky=(W, E))
+response_area.grid(column=2, row=3, sticky=(W, E))
 
 for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
 
