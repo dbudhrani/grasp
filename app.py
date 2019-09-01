@@ -3,6 +3,10 @@ from functools import partial
 from tkinter import *
 from tkinter import ttk
 
+def _request(*args, **kwargs):
+  _url = url.get()
+  request._get(url=_url)
+
 root = Tk()
 root.title("Grasp")
 
@@ -15,14 +19,13 @@ url = StringVar()
 url_entry = ttk.Entry(mainframe, width=70, textvariable=url)
 url_entry.grid(column=2, row=1, sticky=(W, E))
 
-get_request = partial(request._get, url_entry.get())
-
-ttk.Button(mainframe, text="Send", command=get_request).grid(column=3, row=3, sticky=W)
+ttk.Button(mainframe, text="Send", command=_request).grid(column=3, row=3, sticky=W)
 
 ttk.Label(mainframe, text="URL: ").grid(column=3, row=1, sticky=W)
 for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
 
-root.bind('<Return>', get_request)
+url_entry.focus()
+root.bind('<Return>', _request)
 
 root.mainloop()
 
