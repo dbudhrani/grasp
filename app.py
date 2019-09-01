@@ -4,8 +4,9 @@ from tkinter import *
 from tkinter import ttk
 
 def _request(*args, **kwargs):
+  _method = rq_method.get()
   _url = url.get()
-  rs = request._get(url=_url)
+  rs = request.route(method= _method, url=_url)
   response_area.delete(1.0, END)
   response_area.insert(END, rs)
 
