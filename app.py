@@ -6,9 +6,11 @@ from tkinter import ttk
 def _request(*args, **kwargs):
   _method = rq_method.get()
   _url = url.get()
+  response_area.configure(state="normal")
   rs = request.route(method= _method, url=_url)
   response_area.delete(1.0, END)
   response_area.insert(END, rs)
+  response_area.configure(state="disabled")
 
 
 root = Tk()
@@ -37,6 +39,8 @@ rq_methods_menu.grid(row=2, column=2)
 
 response_area = Text(mainframe, borderwidth=1, relief="sunken")
 response_area.grid(column=2, row=3, sticky=(W, E))
+response_area.configure(state="disabled")
+response_area.bind("<1>", lambda event: response_area.focus_set())
 
 for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
 
