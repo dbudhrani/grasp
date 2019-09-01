@@ -37,6 +37,7 @@ rq_methods_menu = OptionMenu(mainframe, rq_method, *rq_methods)
 Label(mainframe, text='Request method').grid(row=2, column=1)
 rq_methods_menu.grid(row=2, column=2)
 
+Label(mainframe, text='Response').grid(row=3, column=1)
 response_area = Text(mainframe, borderwidth=1, relief="sunken")
 response_area.grid(column=2, row=3, sticky=(W, E))
 response_area.configure(state="disabled")
