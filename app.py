@@ -5,7 +5,10 @@ from tkinter import ttk
 
 def _request(*args, **kwargs):
   _url = url.get()
-  request._get(url=_url)
+  rs = request._get(url=_url)
+  response_area.delete(1.0, END)
+  response_area.insert(END, rs)
+
 
 root = Tk()
 root.title("Grasp")
@@ -22,6 +25,10 @@ url_entry.grid(column=2, row=1, sticky=(W, E))
 ttk.Button(mainframe, text="Send", command=_request).grid(column=3, row=3, sticky=W)
 
 ttk.Label(mainframe, text="URL: ").grid(column=3, row=1, sticky=W)
+
+response_area = Text(mainframe, borderwidth=3, relief="sunken")
+
+
 for child in mainframe.winfo_children(): child.grid_configure(padx=5, pady=5)
 
 url_entry.focus()
