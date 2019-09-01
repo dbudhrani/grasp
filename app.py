@@ -31,7 +31,7 @@ Label(mainframe, text="URL").grid(column=1, row=1, sticky=W)
 
 rq_method = StringVar(root)
 rq_method.set('GET')
-rq_methods = {'GET', 'POST', 'PUT', 'DELETE'}
+rq_methods = ['GET', 'POST', 'PUT', 'DELETE']
 
 rq_methods_menu = OptionMenu(mainframe, rq_method, *rq_methods)
 Label(mainframe, text='Request method').grid(row=2, column=1)
